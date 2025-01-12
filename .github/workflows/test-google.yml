@@ -31,21 +31,21 @@ jobs:
 
     # 4. 安裝最新的 Chrome 和 ChromeDriver
     - name: Install Chrome and matching ChromeDriver
-    run: |
-      sudo apt-get update
-      sudo apt-get install -y wget unzip
-      sudo apt-get install -y google-chrome-stable
-      CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d. -f1-3)
-      CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-      wget -N "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-      unzip chromedriver_linux64.zip
-      sudo mv chromedriver /usr/bin/chromedriver
-      sudo chmod +x /usr/bin/chromedriver
-    
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget unzip
+        sudo apt-get install -y google-chrome-stable
+        CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d. -f1-3)
+        CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
+        wget -N "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/bin/chromedriver
+        sudo chmod +x /usr/bin/chromedriver
+
     # 5. 添加環境變數
     - name: Set environment variables
-    run: echo "SEARCH_KEYWORD=${{ secrets.SEARCH_KEYWORD }}" >> $GITHUB_ENV
+      run: echo "SEARCH_KEYWORD=${{ secrets.SEARCH_KEYWORD }}" >> $GITHUB_ENV
 
     # 6. 執行測試
     - name: Run Google search test
-    run: python google_search_test.py
+      run: python google_search_test.py
