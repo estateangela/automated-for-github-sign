@@ -43,11 +43,8 @@ jobs:
 
     # 5. 添加環境變數（模擬 .env 文件）
     - name: Set environment variables
-      env:
-        SEARCH_KEYWORD: ${{ secrets.SEARCH_KEYWORD }}
+      run: echo "SEARCH_KEYWORD=${{ secrets.SEARCH_KEYWORD }}" >> $GITHUB_ENV
 
     # 6. 執行測試
     - name: Run Google search test
-      env:
-        SEARCH_KEYWORD: ${{ secrets.SEARCH_KEYWORD }}
       run: python your_test_script.py
