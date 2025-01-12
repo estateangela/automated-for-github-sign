@@ -47,4 +47,4 @@ jobs:
 
     # 6. 執行測試
     - name: Run Google search test
-      run: python your_test_script.py
+      run: python google_search_test.py
