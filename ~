@@ -1,0 +1,8 @@
+export PATH="/opt/homebrew/bin:$PATH"
+alias python3="python"
+alias pip="pip3"
+
+
+
+
+
